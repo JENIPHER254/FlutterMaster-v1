@@ -1,4 +1,6 @@
+import 'package:crud_firepase_v2/services/database.dart';
 import 'package:flutter/material.dart';
+import 'package:random_string/random_string.dart';
 
 class FormPage extends StatefulWidget {
   const FormPage({super.key});
@@ -8,6 +10,10 @@ class FormPage extends StatefulWidget {
 }
 
 class _FormPageState extends State<FormPage> {
+  TextEditingController namecontroller = new TextEditingController();
+  TextEditingController agecontroller = new TextEditingController();
+  TextEditingController locationcontroller = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +55,7 @@ class _FormPageState extends State<FormPage> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TextField(
+                controller: namecontroller,
                 decoration: InputDecoration(
                   border: InputBorder.none,
                 ),
@@ -67,6 +74,7 @@ class _FormPageState extends State<FormPage> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TextField(
+                controller: agecontroller,
                 decoration: InputDecoration(
                   border: InputBorder.none,
                 ),
@@ -85,6 +93,7 @@ class _FormPageState extends State<FormPage> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TextField(
+                controller: locationcontroller,
                 decoration: InputDecoration(
                   border: InputBorder.none,
                 ),
@@ -100,7 +109,16 @@ class _FormPageState extends State<FormPage> {
                   style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.all(15),
                       backgroundColor: Colors.blue),
-                  onPressed: () {},
+                  onPressed: () async {
+                    String Id = randomAlphaNumeric(10);
+                    Map<String, dynamic> employeeInfoMap = {
+                      "Name": namecontroller,
+                      "age": agecontroller,
+                      "location": locationcontroller
+                    };
+                    await DatabaseMethod()
+                        .addEmployeeDetails(employeeInfoMap, Id);
+                  },
                   child: Text(
                     'Submit',
                     style: TextStyle(
