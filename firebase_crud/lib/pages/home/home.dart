@@ -20,11 +20,20 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: Container(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             Center(
-              child: Text("Welcome To BYTESCAPE"),
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: "Name",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(5),
+                    borderSide: BorderSide(color: Colors.cyan, width: 2),
+                  ),
+                ),
+              ),
             )
           ],
         ),
