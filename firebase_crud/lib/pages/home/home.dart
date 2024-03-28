@@ -71,6 +71,23 @@ class _HomePageState extends State<HomePage> {
   }
 
   updateStudentData() {
+    // get data to be updated
+    DocumentReference dcoumentReference =
+        FirebaseFirestore.instance.collection("myStudent").doc(studentEmail);
+
+    //mapping to database
+    Map<String, dynamic> details = {
+      "studentName": studentName,
+      "studentEmail": studentEmail,
+      "studentID": studentID,
+      "programID": programmID,
+      "studentGPA": studentGPA
+    };
+
+    //updating the data
+    dcoumentReference.set(details).whenComplete(() {
+      print("$studentName updated");
+    });
     print('updated');
   }
 
