@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_crud/widgets/appbar_text/appbar_text.dart';
+import 'package:firebase_crud/widgets/button/button.dart';
 
 import 'package:flutter/material.dart';
 
@@ -10,12 +12,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late String studentName, studentID, programmID;
-  late double studentGPA;
+  String? studentName, studentID, programmID, studentEmail;
+  double? studentGPA;
 
   getStudentName(String name) {
     this.studentName = name;
     print(name);
+  }
+
+  getStudentEmail(String email) {
+    this.studentEmail = email;
+    print(email);
   }
 
   getStudentID(String studentID) {
@@ -32,6 +39,43 @@ class _HomePageState extends State<HomePage> {
     double gpa = double.parse(studentGPA);
     this.studentGPA = gpa;
     print(studentGPA);
+  }
+
+  createStudentData() {
+    // aligning the path
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection("myStudent").doc(studentEmail);
+    // create Map
+    Map<String, dynamic> student = {
+      "studentName": studentName,
+      "studentEmail": studentEmail,
+      "studentID": studentID,
+      "programID": programmID,
+      "studentGPA": studentGPA
+    };
+
+    // Setting data to Firestore and handling completion and error cases
+    documentReference.set(student).then((_) {
+      // This block executes when the operation completes successfully
+      print("$studentName created");
+    }).catchError((error) {
+      // This block executes if an error occurs during the operation
+      print("Error creating $studentName: $error");
+    });
+
+    print('creat button');
+  }
+
+  deleteStudentData() {
+    print('deleted');
+  }
+
+  updateStudentData() {
+    print('updated');
+  }
+
+  readStudentData() {
+    print('read');
   }
 
   @override
@@ -64,6 +108,23 @@ class _HomePageState extends State<HomePage> {
                   ),
                   onChanged: (String name) {
                     getStudentName(name);
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Center(
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText: "Email",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      borderSide: BorderSide(color: Colors.cyan, width: 2),
+                    ),
+                  ),
+                  onChanged: (String email) {
+                    getStudentEmail(email);
                   },
                 ),
               ),
@@ -121,6 +182,23 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 25,
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  myButton("create", Colors.green, () {
+                    createStudentData();
+                  }),
+                  myButton("read", Colors.blue, () {
+                    readStudentData();
+                  }),
+                  myButton("update", Colors.orange, () {
+                    updateStudentData();
+                  }),
+                  myButton("delete", Colors.red, () {
+                    deleteStudentData();
+                  }),
+                ],
+              )
             ],
           ),
         ),
