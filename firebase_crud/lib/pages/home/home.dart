@@ -75,7 +75,54 @@ class _HomePageState extends State<HomePage> {
   }
 
   readStudentData() {
-    print('read');
+    // getting the record
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection("myStudent").doc(studentEmail);
+
+    documentReference.get().then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        // mapping out the associative array
+        var data = documentSnapshot.data() as Map<String, dynamic>?;
+        if (data != null) {
+          var student = data['studentName'];
+          var email = data['studentEmail'];
+          var studentID = data['studentID'];
+          var gpa = data['studentGPA'];
+          var programID = data['PprogramID'];
+
+          if (student != null) {
+            print(student);
+          } else {
+            print("student name is null!");
+          }
+          if (email != null) {
+            print(email);
+          } else {
+            print("email name is null!");
+          }
+          if (studentID != null) {
+            print(studentID);
+          } else {
+            print("StudentID  is null!");
+          }
+          if (programID != null) {
+            print(programID);
+          } else {
+            print("ProgramID  is null!");
+          }
+          if (gpa != null) {
+            print(gpa);
+          } else {
+            print("StudentGPA  is null!");
+          }
+        } else {
+          print("Document data is null");
+        }
+      } else {
+        print("Student Does not Exist");
+      }
+    });
+    print('read button');
   }
 
   @override
@@ -100,14 +147,14 @@ class _HomePageState extends State<HomePage> {
               Center(
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: "Name",
+                    labelText: "Email",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                       borderSide: BorderSide(color: Colors.cyan, width: 2),
                     ),
                   ),
-                  onChanged: (String name) {
-                    getStudentName(name);
+                  onChanged: (String email) {
+                    getStudentEmail(email);
                   },
                 ),
               ),
@@ -117,14 +164,14 @@ class _HomePageState extends State<HomePage> {
               Center(
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: "Email",
+                    labelText: "Name",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                       borderSide: BorderSide(color: Colors.cyan, width: 2),
                     ),
                   ),
-                  onChanged: (String email) {
-                    getStudentEmail(email);
+                  onChanged: (String name) {
+                    getStudentName(name);
                   },
                 ),
               ),
