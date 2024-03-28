@@ -67,6 +67,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   deleteStudentData() {
+    // geting the record
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection("myStudent").doc(studentEmail);
+
+    documentReference.delete().whenComplete(() {
+      print("$studentName deleted");
+    });
     print('deleted');
   }
 
