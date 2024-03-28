@@ -63,6 +63,7 @@ class _HomePageState extends State<HomePage> {
       print("Error creating $studentName: $error");
     });
 
+    Navigator.pushNamed(context, "/");
     print('creat button');
   }
 
@@ -74,6 +75,7 @@ class _HomePageState extends State<HomePage> {
     documentReference.delete().whenComplete(() {
       print("$studentName deleted");
     });
+    Navigator.pushNamed(context, "/");
     print('deleted');
   }
 
@@ -95,6 +97,7 @@ class _HomePageState extends State<HomePage> {
     dcoumentReference.set(details).whenComplete(() {
       print("$studentName updated");
     });
+    Navigator.pushNamed(context, "/");
     print('updated');
   }
 
@@ -146,6 +149,7 @@ class _HomePageState extends State<HomePage> {
         print("Student Does not Exist");
       }
     });
+    Navigator.pushNamed(context, "/");
     print('read button');
   }
 
@@ -269,7 +273,109 @@ class _HomePageState extends State<HomePage> {
                     deleteStudentData();
                   }),
                 ],
-              )
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              FutureBuilder<QuerySnapshot>(
+                future:
+                    FirebaseFirestore.instance.collection("myStudent").get(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return CircularProgressIndicator(); // Display loading indicator while data is fetched
+                  }
+                  if (snapshot.hasError) {
+                    return Text("Error: ${snapshot.error}");
+                  }
+                  if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                    return Text("No data found");
+                  }
+                  return ListView(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    children:
+                        snapshot.data!.docs.map((DocumentSnapshot document) {
+                      var data = document.data() as Map<String, dynamic>;
+                      return ListTile(
+                        title: Column(
+                          children: [
+                            Divider(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                    child: Text(
+                                  "Student Name:",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14),
+                                )),
+                                Expanded(
+                                    child: Text("${data['studentName']}",
+                                        style: TextStyle(fontSize: 14))),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                    child: Text(
+                                  "Student Email:",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14),
+                                )),
+                                Expanded(
+                                    child: Text("${data['studentEmail']}",
+                                        style: TextStyle(fontSize: 14))),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                    child: Text(
+                                  "Student ID:",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14),
+                                )),
+                                Expanded(
+                                    child: Text("${data['studentID']}",
+                                        style: TextStyle(fontSize: 14))),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                    child: Text(
+                                  "ProgramID:",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14),
+                                )),
+                                Expanded(
+                                    child: Text("${data['studentGPA']}",
+                                        style: TextStyle(fontSize: 14))),
+                              ],
+                            ),
+                            Divider()
+                          ],
+                        ),
+                        subtitle: Text(""),
+                        onTap: () {
+                          // Handle tap event if needed
+                        },
+                      );
+                    }).toList(),
+                  );
+                },
+              ),
             ],
           ),
         ),
