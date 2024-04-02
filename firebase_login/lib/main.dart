@@ -19,7 +19,7 @@ void main() async {
       "/": (context) => Landing(),
       "home": (context) => Home(),
       "siginin": (context) => Signin(),
-      "siginup": (context) => Signup(),
+      "signup": (context) => Signup(),
     },
   ));
 }

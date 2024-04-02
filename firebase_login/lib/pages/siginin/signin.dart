@@ -48,6 +48,7 @@ class _SigninState extends State<Signin> {
                 height: 35,
               ),
               Column(
+                
                 children: [
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -77,19 +78,29 @@ class _SigninState extends State<Signin> {
                       children: [
                         TextButton(
                             onPressed: () {},
-                            child: blur_text("Forgot Password ..."))
+                            child:
+                                blur_text("Forgot Password ...", Colors.grey))
                       ],
                     ),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 25,
                   ),
                   loginreg_button("Signin", () {
                     Navigator.pushNamed(context, "home");
                   }),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                    child: blur_text("Subscribe to BYTESCAPE...."),
+                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                    child: Column(
+                      children: [
+                        blur_text("Don't have an account ?  ", Colors.grey),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, "signup");
+                            },
+                            child: blur_text("signup here..", Colors.purple)),
+                      ],
+                    ),
                   ),
                 ],
               ),
