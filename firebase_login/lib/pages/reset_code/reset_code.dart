@@ -3,18 +3,26 @@ import 'package:firebase_login/widgets/blur_text.dart';
 import 'package:firebase_login/widgets/loginreg_button.dart';
 import 'package:flutter/material.dart';
 
-class Forgot extends StatefulWidget {
-  const Forgot({super.key});
+class ResetCode extends StatefulWidget {
+  const ResetCode({super.key});
 
   @override
-  State<Forgot> createState() => _ForgotState();
+  State<ResetCode> createState() => _ResetCodeState();
 }
 
-class _ForgotState extends State<Forgot> {
+class _ResetCodeState extends State<ResetCode> {
   @override
   Widget build(BuildContext context) {
     getUserEmail(email) {
       return print(email);
+    }
+
+    getUserPassword(pass1) {
+      return print(pass1);
+    }
+
+    getUserConfirmPassword(pass2) {
+      return print(pass2);
     }
 
     return Scaffold(
@@ -59,19 +67,46 @@ class _ForgotState extends State<Forgot> {
                   SizedBox(
                     height: 25,
                   ),
-                  loginreg_button("Get Reset Code", () {
-                    Navigator.pushNamed(context, "resetcode");
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: TextField(
+                      //controller: _emailController,
+                      onChanged: (String pass1) {
+                        getUserPassword(pass1);
+                      },
+                      decoration: InputDecoration(label: Text("New Password")),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: TextField(
+                      //controller: _emailController,
+                      onChanged: (String pass2) {
+                        getUserConfirmPassword(pass2);
+                      },
+                      decoration:
+                          InputDecoration(label: Text("Confirm new password")),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  loginreg_button("Reset Password", () {
+                    Navigator.pushNamed(context, "siginin");
                   }),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                     child: Column(
                       children: [
-                        blur_text("Go Back to login  ", Colors.grey),
+                        blur_text("Didnt Get reset code?  ", Colors.grey),
                         TextButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, "siginin");
+                              Navigator.pushNamed(context, "forgot");
                             },
-                            child: blur_text("here..", Colors.purple)),
+                            child: blur_text("get new one..", Colors.purple)),
                       ],
                     ),
                   ),

@@ -3,6 +3,7 @@ import 'package:firebase_login/firebase_options.dart';
 import 'package:firebase_login/pages/forgot/Forgot.dart';
 import 'package:firebase_login/pages/home/home.dart';
 import 'package:firebase_login/pages/landing/landing.dart';
+import 'package:firebase_login/pages/reset_code/reset_code.dart';
 import 'package:firebase_login/pages/siginin/signin.dart';
 import 'package:firebase_login/pages/signup/siginup.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,8 @@ void main() async {
       "home": (context) => Home(),
       "siginin": (context) => Signin(),
       "signup": (context) => Signup(),
-      "forgot":(context) => Forgot()
+      "forgot": (context) => Forgot(),
+      "resetcode": (context) => ResetCode()
     },
   ));
 }
