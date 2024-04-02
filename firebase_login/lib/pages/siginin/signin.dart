@@ -38,8 +38,13 @@ class _SigninState extends State<Signin> {
                 ),
               ),
               Center(
-                  child: big_text(
-                      "Welcome Back... ", Color.fromARGB(255, 108, 18, 124))),
+                  child: TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "/");
+                },
+                child: big_text(
+                    "Welcome Back... ", Color.fromARGB(255, 108, 18, 124)),
+              )),
               SizedBox(
                 height: 15,
               ),
@@ -48,7 +53,6 @@ class _SigninState extends State<Signin> {
                 height: 35,
               ),
               Column(
-                
                 children: [
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),

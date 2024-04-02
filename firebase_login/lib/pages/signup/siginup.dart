@@ -35,8 +35,13 @@ class _SignupState extends State<Signup> {
                 ),
               ),
               Center(
-                  child: big_text(
-                      "Welcome Back... ", Color.fromARGB(255, 108, 18, 124))),
+                  child: TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "/");
+                },
+                child: big_text(
+                    "Welcome Back... ", Color.fromARGB(255, 108, 18, 124)),
+              )),
               SizedBox(
                 height: 15,
               ),
