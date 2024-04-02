@@ -17,7 +17,7 @@ void main() async {
     initialRoute: "/",
     routes: {
       "/": (context) => Landing(),
-      "landing": (context) => Home(),
+      "home": (context) => Home(),
       "siginin": (context) => Signin(),
       "siginup": (context) => Signup(),
     },

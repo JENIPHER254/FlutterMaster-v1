@@ -1,4 +1,5 @@
 import 'package:firebase_login/widgets/big_text.dart';
+import 'package:firebase_login/widgets/blur_text.dart';
 import 'package:firebase_login/widgets/loginreg_button.dart';
 import 'package:flutter/material.dart';
 
@@ -26,27 +27,27 @@ class _SigninState extends State<Signin> {
 
     return Scaffold(
       body: Container(
-        child: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              child: Image(
-                image: AssetImage("assets/images/wave1.jpeg"),
-                fit: BoxFit.fitWidth,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                child: Image(
+                  image: AssetImage("assets/images/wave1.jpeg"),
+                  fit: BoxFit.fitWidth,
+                ),
               ),
-            ),
-            Center(
-                child: big_text(
-                    "Welcome Back... ", Color.fromARGB(255, 108, 18, 124))),
-            SizedBox(
-              height: 15,
-            ),
-            big_text("Signin", Colors.black),
-            SizedBox(
-              height: 35,
-            ),
-            SingleChildScrollView(
-              child: Column(
+              Center(
+                  child: big_text(
+                      "Welcome Back... ", Color.fromARGB(255, 108, 18, 124))),
+              SizedBox(
+                height: 15,
+              ),
+              big_text("Signin", Colors.black),
+              SizedBox(
+                height: 35,
+              ),
+              Column(
                 children: [
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -69,16 +70,31 @@ class _SigninState extends State<Signin> {
                       decoration: InputDecoration(label: Text("Password")),
                     ),
                   ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        TextButton(
+                            onPressed: () {},
+                            child: blur_text("Forgot Password ..."))
+                      ],
+                    ),
+                  ),
                   SizedBox(
-                    height: 40,
+                    height: 30,
                   ),
                   loginreg_button("Signin", () {
                     Navigator.pushNamed(context, "home");
-                  })
+                  }),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                    child: blur_text("Subscribe to BYTESCAPE...."),
+                  ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
