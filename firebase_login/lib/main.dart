@@ -13,7 +13,7 @@ void main() async {
   );
 
   runApp(MaterialApp(
-    //debugShowCheckedModeBanner: false,
+    debugShowCheckedModeBanner: false,
     initialRoute: "/",
     routes: {
       "/": (context) => Landing(),
