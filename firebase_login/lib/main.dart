@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_login/firebase_options.dart';
+import 'package:firebase_login/pages/forgot/Forgot.dart';
 import 'package:firebase_login/pages/home/home.dart';
 import 'package:firebase_login/pages/landing/landing.dart';
 import 'package:firebase_login/pages/siginin/signin.dart';
@@ -20,6 +21,7 @@ void main() async {
       "home": (context) => Home(),
       "siginin": (context) => Signin(),
       "signup": (context) => Signup(),
+      "forgot":(context) => Forgot()
     },
   ));
 }

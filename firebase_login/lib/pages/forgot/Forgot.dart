@@ -3,26 +3,18 @@ import 'package:firebase_login/widgets/blur_text.dart';
 import 'package:firebase_login/widgets/loginreg_button.dart';
 import 'package:flutter/material.dart';
 
-class Signin extends StatefulWidget {
-  const Signin({super.key});
+class Forgot extends StatefulWidget {
+  const Forgot({super.key});
 
   @override
-  State<Signin> createState() => _SigninState();
+  State<Forgot> createState() => _ForgotState();
 }
 
-class _SigninState extends State<Signin> {
+class _ForgotState extends State<Forgot> {
   @override
   Widget build(BuildContext context) {
-    //String userEmail, userPassword;
-    // TextEditingController _emailController = TextEditingController();
-    // TextEditingController _passwordController = TextEditingController();
-
     getUserEmail(email) {
       return print(email);
-    }
-
-    getUserPassword(password) {
-      return print(password);
     }
 
     return Scaffold(
@@ -48,9 +40,9 @@ class _SigninState extends State<Signin> {
               SizedBox(
                 height: 15,
               ),
-              big_text("Signin", Colors.black),
+              big_text("Reset Password", Colors.black),
               SizedBox(
-                height: 35,
+                height: 45,
               ),
               Column(
                 children: [
@@ -61,50 +53,25 @@ class _SigninState extends State<Signin> {
                       onChanged: (String email) {
                         getUserEmail(email);
                       },
-                      decoration:
-                          InputDecoration(label: Text("Email / Username")),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: TextField(
-                      //controller: _passwordController,
-                      onChanged: (String password) {
-                        getUserPassword(password);
-                      },
-                      decoration: InputDecoration(label: Text("Password")),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        TextButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, "forgot");
-                            },
-                            child:
-                                blur_text("Forgot Password ...", Colors.grey))
-                      ],
+                      decoration: InputDecoration(label: Text("Email")),
                     ),
                   ),
                   SizedBox(
                     height: 25,
                   ),
-                  loginreg_button("Signin", () {
+                  loginreg_button("Get Reset Code", () {
                     Navigator.pushNamed(context, "home");
                   }),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                     child: Column(
                       children: [
-                        blur_text("Don't have an account ?  ", Colors.grey),
+                        blur_text("Go Back to login  ", Colors.grey),
                         TextButton(
                             onPressed: () {
                               Navigator.pushNamed(context, "signup");
                             },
-                            child: blur_text("signup here..", Colors.purple)),
+                            child: blur_text("here..", Colors.purple)),
                       ],
                     ),
                   ),
