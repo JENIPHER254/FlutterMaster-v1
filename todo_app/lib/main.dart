@@ -9,18 +9,18 @@ import 'package:todo_app/pages/profile/profile.dart';
 import 'package:todo_app/pages/register/register.dart';
 
 void main() {
-  runApp( MaterialApp(
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     initialRoute: "/",
-
     routes: {
-      '/':(context) =>  Landing(),
-      '/dash':(context) =>  Dashboard(),
-      '/login':(context) =>  Login(),
-      '/reg':(context) => Register(),
-      '/logout':(context) => Logout(),
-      '/manage-tasks':(context) => ManageTasks(),
-      '/calender':(context) => MyCalender(),
-      '/profile':(context) => Profile()
+      '/': (context) => Landing(),
+      '/dash': (context) => Dashboard(),
+      '/login': (context) => Login(),
+      '/reg': (context) => Register(),
+      '/logout': (context) => Logout(),
+      '/manage-tasks': (context) => ManageTasks(),
+      '/calender': (context) => MyCalender(),
+      '/profile': (context) => Profile()
     },
   ));
 }
