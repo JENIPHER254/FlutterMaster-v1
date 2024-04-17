@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:todo_app/widgets/bg_button/bg_button.dart';
 import 'package:todo_app/widgets/bg_text/bg_text.dart';
+import 'package:todo_app/widgets/flexText/flexText.dart';
 import 'package:todo_app/widgets/sm_text/sm_text.dart';
 
 class Login extends StatefulWidget {
@@ -11,6 +13,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool? isChecked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +35,7 @@ class _LoginState extends State<Login> {
                       },
                       child: Image(
                         image: AssetImage("assets/images/logo.png"),
-                        width: 150,
+                        width: 130,
                       ),
                     ),
                     Row(
@@ -45,11 +48,11 @@ class _LoginState extends State<Login> {
                     smText("Login To Access Utilities...",
                         Color.fromARGB(255, 196, 195, 195)),
                     SizedBox(
-                      height: 12,
+                      height: 38,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 8.0, horizontal: 22),
+                          vertical: 0, horizontal: 22),
                       child: TextField(
                         cursorColor: Colors.orange,
                         decoration: InputDecoration(
@@ -66,7 +69,7 @@ class _LoginState extends State<Login> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 8.0, horizontal: 22),
+                          vertical: 0, horizontal: 22),
                       child: TextField(
                         cursorColor: Colors.orange,
                         decoration: InputDecoration(
@@ -80,6 +83,48 @@ class _LoginState extends State<Login> {
                                 fontWeight: FontWeight.bold),
                             label: Text("Password")),
                       ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0, right: 15),
+                          child: TextButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, "/forgot");
+                              },
+                              child: flexText("Forgot Password...",
+                                  const Color.fromARGB(255, 194, 192, 192))),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 25.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Checkbox(
+                            activeColor: Colors.orange,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5)),
+                            tristate: true,
+                            value: isChecked,
+                            onChanged: (bool? value) {
+                              setState(() {
+                                isChecked = value;
+                              });
+                            },
+                          ),
+                          flexText("remember details", Colors.blueGrey)
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: .0, horizontal: 35),
+                      child: bgbutton("LOGIN", Colors.white, () {
+                        Navigator.pushNamed(context, "/dash");
+                      }, Colors.orange),
                     )
                   ],
                 ),
