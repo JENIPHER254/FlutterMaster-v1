@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/pages/analytics/analytics.dart';
 import 'package:todo_app/pages/dash/dash.dart';
 import 'package:todo_app/pages/forgotpass/forgotpass.dart';
 import 'package:todo_app/pages/landing/landing.dart';
@@ -22,7 +23,8 @@ void main() {
       '/manage-tasks': (context) => ManageTasks(),
       '/calender': (context) => MyCalender(),
       '/profile': (context) => Profile(),
-      "/forgot": (context) => ForgotPass()
+      "/forgot": (context) => ForgotPass(),
+      '/analytics': (context) => Analytics()
     },
   ));
 }
