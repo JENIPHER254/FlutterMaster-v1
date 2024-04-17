@@ -10,33 +10,40 @@ class Landing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.white,
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
-              child: Image(
-                width: double.infinity,
-                image: AssetImage("assets/images/img01.jpeg"),
+              color: Colors.white,
+              child: Column(
+                children: [
+                  Container(
+                    child: Image(
+                      width: double.infinity,
+                      image: AssetImage("assets/images/img01.jpeg"),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    child: Image(
+                      image: AssetImage("assets/images/img05.jpg"),
+                      height: 200,
+                    ),
+                  ),
+                  smText('" Empower Your Day, One Task at a Time..."',
+                      Colors.grey),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  smbutton("Get Started", Colors.white, () {
+                    Navigator.pushNamed(context, "/login");
+                  }, Colors.orange),
+                ],
               ),
             ),
-            SizedBox(
-              height: 30,
-            ),
-            Container(
-              width: double.infinity,
-              child: Image(
-                image: AssetImage("assets/images/img05.jpg"),
-                height: 200,
-              ),
-            ),
-            smText('" Empower Your Day, One Task at a Time..."', Colors.grey),
-            SizedBox(
-              height: 30,
-            ),
-            smbutton("Get Started", Colors.white, () {
-              Navigator.pushNamed(context, "/login");
-            }, Colors.orange),
           ],
         ),
       ),
