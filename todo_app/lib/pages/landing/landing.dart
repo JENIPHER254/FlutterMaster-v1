@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:todo_app/widgets/bg_text/bg_text.dart';
+
 import 'package:todo_app/widgets/sm_button/smbutton.dart';
 import 'package:todo_app/widgets/sm_text/sm_text.dart';
 
@@ -23,7 +23,6 @@ class Landing extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            bgText("PrioriTask", Colors.orange),
             Container(
               width: double.infinity,
               child: Image(
