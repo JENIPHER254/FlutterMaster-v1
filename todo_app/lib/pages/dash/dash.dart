@@ -19,6 +19,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         automaticallyImplyLeading: true,
       ),
       drawer: SideNav(),
@@ -52,6 +53,51 @@ class _DashboardState extends State<Dashboard> {
                       midText("Task", Colors.orange),
                       midText("Track", Colors.blue),
                     ],
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 6,
+                    child: TextField(
+                      decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.mic,
+                                size: 14,
+                              )),
+                          prefixIcon: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.search,
+                                size: 14,
+                              )),
+                          hintText: "Search here...",
+                          hintStyle: TextStyle(fontSize: 12),
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide(
+                                  width: 0.8,
+                                  style: BorderStyle.solid,
+                                  color: Color.fromARGB(255, 184, 183, 183)))),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.list_alt,
+                          color: Colors.orange,
+                          size: 60,
+                        )),
                   )
                 ],
               )
