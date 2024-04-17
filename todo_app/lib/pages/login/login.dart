@@ -48,7 +48,7 @@ class _LoginState extends State<Login> {
                     smText("Login To Access Utilities...",
                         Color.fromARGB(255, 196, 195, 195)),
                     SizedBox(
-                      height: 38,
+                      height: 35,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
@@ -98,6 +98,9 @@ class _LoginState extends State<Login> {
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(left: 25.0),
                       child: Row(
@@ -129,6 +132,28 @@ class _LoginState extends State<Login> {
                   ],
                 ),
               ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Container(
+              width: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  flexText("Don't have an account ?", Colors.grey),
+                  flexText("Register ", Colors.grey),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/reg");
+                    },
+                    child: flexText("Here !!", Colors.blue),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
             ),
           ],
         ),
