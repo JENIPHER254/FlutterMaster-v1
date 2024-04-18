@@ -9,6 +9,7 @@ import 'package:todo_app/widgets/drawer/sidenav.dart';
 import 'package:todo_app/widgets/flexText/flexText.dart';
 
 import 'package:todo_app/widgets/sm_text/sm_text.dart';
+import 'package:todo_app/widgets/taskcard/taskcard.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -185,34 +186,14 @@ class _DashboardState extends State<Dashboard> {
               Divider(),
               CarouselSlider(
                   items: [
-                    Container(
-                      child: Image(image: AssetImage("assets/images/bg5.jpg")),
-                      margin: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          color: Colors.white),
-                    ),
-                    Container(
-                      child: Image(image: AssetImage("assets/images/bg4.jpg")),
-                      margin: EdgeInsets.all(4),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.white),
-                    ),
-                    Container(
-                      child: Image(image: AssetImage("assets/images/bg3.jpg")),
-                      margin: EdgeInsets.all(4),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.white),
-                    ),
-                    Container(
-                      child: Image(image: AssetImage("assets/images/bg2.jpg")),
-                      margin: EdgeInsets.all(4),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.white),
-                    )
+                    taskCard("Task 1", "12th APRIL 2024", "Nairobi", "Alex",
+                        " : 23441"),
+                    taskCard("Task 1", "12th APRIL 2024", "Nairobi", "Alex",
+                        " : 20002"),
+                    taskCard("Task 1", "12th APRIL 2024", "Nairobi", "Alex",
+                        " : 14176"),
+                    taskCard("Task 1", "12th APRIL 2024", "Nairobi", "Alex",
+                        " : 14113"),
                   ],
                   options: CarouselOptions(
                       viewportFraction: 0.7,
