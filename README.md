@@ -14,5 +14,6 @@ flutter course and fundermental concepts
 - Install firebase core
 -  Initialize app (from firebase_options.dart)
 
-
-
+| Crud Operations             |
+| --------------------------- |
+| ![plot](./designs/crud1.png) |
