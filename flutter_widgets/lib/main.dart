@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
 
+//defined as a global variable
+
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool isLightTheme = true;
+  void toggleTheme() {
+    setState(() {
+      isLightTheme = !isLightTheme;
+    });
+  }
 
   // This widget is the root of your application.
   @override
@@ -13,27 +27,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        brightness: Brightness.light,
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.red,
-          titleTextStyle: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-          ),
-        ),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      theme: isLightTheme ? ThemeData.light() : ThemeData.dark(),
+      home:
+          MyHomePage(title: 'Flutter Demo Home Page', toggleTheme: toggleTheme),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key, required this.title, required this.toggleTheme});
 
   final String title;
-
+  final VoidCallback toggleTheme;
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -45,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter++;
     });
+    widget.toggleTheme();
   }
 
   @override
