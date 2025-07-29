@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'layout/layout.dart';
+import 'page_view_wiget/page_view_widget.dart';
 
 void main() {
   runApp(MainLayout());
@@ -22,12 +23,14 @@ class _MainLayoutState extends State<MainLayout> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: isLigntTheme ? ThemeData.light() : ThemeData.dark(),
       initialRoute: '/',
       routes: {
         '/': (context) => HomePage(
               toggleTheme: toggleTheme,
             ),
+        '/page_view': (context) => PageViewDemo(),
       },
     );
   }
