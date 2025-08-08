@@ -9,7 +9,7 @@ class VerticalManual extends StatelessWidget {
     return Scaffold(
       body: PageView(
         controller: _pageviewController,
-        scrollDirection: Axis.horizontal,
+        scrollDirection: Axis.vertical,
         children: [
           Container(
             color: Colors.red,
