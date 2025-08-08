@@ -1,98 +1,66 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.toggleTheme});
+class LandingPage extends StatefulWidget {
+  const LandingPage({super.key, required this.toggleTheme});
   final VoidCallback toggleTheme;
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<LandingPage> createState() => _LandingPageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  final List<Map<String, dynamic>> widget_items = [
+class _LandingPageState extends State<LandingPage> {
+  final List<Map<String, dynamic>> widgetItems = [
     {
-      'title': 'Layout',
-      'route': '/layout',
-      'icon': Icons.grid_view,
-      'content':
-          'This is the layout page where you can find various layout widgets.',
-    },
-    {
-      'title': 'Widgets',
-      'route': '/widgets',
-      'icon': Icons.widgets,
-      'content': 'This page contains various Flutter widgets for building UI.',
-    },
-    {
-      'title': 'Animations',
-      'route': '/animations',
-      'icon': Icons.animation,
-      'content': 'Explore different animations available in Flutter.',
-    },
-    {
-      'title': 'PageView',
-      'route': '/page_view',
-      'icon': Icons.view_carousel,
-      'content':
-          'This page demonstrates the PageView widget for swiping between pages.',
-    },
-    {
-      'title': 'Networking',
-      'route': '/networking',
-      'icon': Icons.network_check,
-      'content': 'Learn how to make network requests in Flutter.',
-    },
-    {
-      'title': 'Database',
-      'route': '/database',
-      'icon': Icons.storage,
-      'content': 'Understand how to work with databases in Flutter.',
+      'title': 'Navigation Widgets',
+      'subcategories': [
+        {
+          'title': 'Horizontal PageView',
+          'route': '/pageview_horizontal_auto',
+          'icon': Icons.view_carousel,
+          'content': 'This page demonstrates the Horizontal PageView widget.',
+        },
+        {
+          'title': 'Vertical PageView',
+          'route': '/pageview_vertical_auto',
+          'icon': Icons.tab,
+          'content': 'This page demonstrates the Vertical PageView widget.',
+        },
+        {
+          'title': 'Horizontal PageView (Manual)',
+          'route': '/pageview_horizontal_manual',
+          'icon': Icons.view_carousel,
+          'content': 'This page demonstrates the Horizontal PageView widget.',
+        },
+        {
+          'title': 'Vertical PageView (Manual)',
+          'route': '/pageview_vertical_manual',
+          'icon': Icons.tab,
+          'content': 'This page demonstrates the Vertical PageView widget.',
+        },
+      ],
     },
   ];
 
-  Widget buildFAQTile(
+  Widget buildCategoryTile(
     String title,
-    IconData icon,
-    String content,
-    VoidCallback onTap,
+    List<Map<String, dynamic>> subcategories,
   ) {
     return ExpansionTile(
       tilePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       title: Text(
         title,
-        style: const TextStyle(fontWeight: FontWeight.w600),
+        style: const TextStyle(fontWeight: FontWeight.bold),
       ),
-      children: [
-        InkWell(
-          onTap: onTap,
-          child: Row(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(left: 16, right: 16, bottom: 12),
-                  child: Text(
-                    content,
-                    style: const TextStyle(color: Colors.grey),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 16, right: 16, bottom: 12),
-                child: IconButton(
-                  onPressed: () {
-                    onTap();
-                  },
-                  icon: Icon(
-                    icon,
-                    color: Colors.grey[700],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
+      children: subcategories.map((sub) {
+        return ListTile(
+          leading: Icon(sub['icon'], color: Colors.grey[700]),
+          title: Text(sub['title']),
+          subtitle: Text(sub['content'], style: const TextStyle(fontSize: 12)),
+          onTap: () {
+            Navigator.pushNamed(context, sub['route']);
+          },
+        );
+      }).toList(),
     );
   }
 
@@ -107,15 +75,14 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 14.0, vertical: 12.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Expanded(
+                    const Expanded(
                       flex: 2,
-                      child: const Text(
+                      child: Text(
                         'Learning Flutter Widgets',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
@@ -154,19 +121,14 @@ class _HomePageState extends State<HomePage> {
                 endIndent: 20,
               ),
               const SizedBox(height: 20),
-              // ✅ Wrap ListView in Expanded
               Expanded(
                 child: ListView.builder(
-                  itemCount: widget_items.length,
+                  itemCount: widgetItems.length,
                   itemBuilder: (context, index) {
-                    final item = widget_items[index];
-                    return buildFAQTile(
-                      item['title'],
-                      item['icon'],
-                      item['content'],
-                      () {
-                        Navigator.pushNamed(context, item['route']);
-                      },
+                    final category = widgetItems[index];
+                    return buildCategoryTile(
+                      category['title'],
+                      category['subcategories'],
                     );
                   },
                 ),

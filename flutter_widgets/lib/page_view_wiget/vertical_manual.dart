@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PageViewDemo extends StatelessWidget {
-  const PageViewDemo({super.key});
+class VerticalManual extends StatelessWidget {
+  const VerticalManual({super.key});
 
   @override
   Widget build(BuildContext context) {

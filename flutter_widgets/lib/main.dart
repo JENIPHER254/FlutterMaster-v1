@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'layout/layout.dart';
-import 'page_view_wiget/page_view_widget.dart';
+import 'page_view_wiget/horizontal_auto.dart';
+import 'page_view_wiget/horizontal_manual.dart';
+import 'page_view_wiget/vertical_auto.dart';
+import 'page_view_wiget/vertical_manual.dart';
 
 void main() {
   runApp(MainLayout());
@@ -27,10 +30,13 @@ class _MainLayoutState extends State<MainLayout> {
       theme: isLigntTheme ? ThemeData.light() : ThemeData.dark(),
       initialRoute: '/',
       routes: {
-        '/': (context) => HomePage(
+        '/': (context) => LandingPage(
               toggleTheme: toggleTheme,
             ),
-        '/page_view': (context) => PageViewDemo(),
+        '/pageview_horizontal_auto': (context) => HorizontalAutomatic(),
+        '/pageview_horizontal_manual': (context) => HorizontalManual(),
+        '/pageview_vertical_auto': (context) => VerticalAutomatic(),
+        '/pageview_vertical_manual': (context) => VerticalManual(),
       },
     );
   }
