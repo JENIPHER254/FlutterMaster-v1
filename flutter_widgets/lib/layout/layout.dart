@@ -37,6 +37,12 @@ class _LandingPageState extends State<LandingPage> {
           'icon': Icons.tab,
           'content': 'This page demonstrates the Vertical PageView widget.',
         },
+        {
+          'title': 'TikTok Effect',
+          'route': '/pageview_tiktok_effect',
+          'icon': Icons.tab,
+          'content': 'This page demonstrates the TikTok Effect using PageView.',
+        },
       ],
     },
   ];

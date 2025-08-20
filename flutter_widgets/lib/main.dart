@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'layout/layout.dart';
 import 'page_view_wiget/horizontal_auto.dart';
 import 'page_view_wiget/horizontal_manual.dart';
+import 'page_view_wiget/pageview_tiktok_effect.dart';
 import 'page_view_wiget/vertical_auto.dart';
 import 'page_view_wiget/vertical_manual.dart';
 
@@ -37,6 +38,7 @@ class _MainLayoutState extends State<MainLayout> {
         '/pageview_horizontal_manual': (context) => HorizontalManual(),
         '/pageview_vertical_auto': (context) => VerticalAutomatic(),
         '/pageview_vertical_manual': (context) => VerticalManual(),
+        '/pageview_tiktok_effect': (context) => PageviewTiktokEffect(),
       },
     );
   }
