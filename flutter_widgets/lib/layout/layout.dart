@@ -43,6 +43,12 @@ class _LandingPageState extends State<LandingPage> {
           'icon': Icons.tab,
           'content': 'This page demonstrates the TikTok Effect using PageView.',
         },
+        {
+          'title': 'Color Change',
+          'route': '/color_change_challenge',
+          'icon': Icons.tab,
+          'content': 'This page demonstrates the Color Change effect using PageView.',
+        },
       ],
     },
   ];

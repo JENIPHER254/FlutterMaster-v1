@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/page_view_wiget/color_change_challange.dart' show ColorChangeChallange;
 
 import 'layout/layout.dart';
 import 'page_view_wiget/horizontal_auto.dart';
@@ -39,6 +40,7 @@ class _MainLayoutState extends State<MainLayout> {
         '/pageview_vertical_auto': (context) => VerticalAutomatic(),
         '/pageview_vertical_manual': (context) => VerticalManual(),
         '/pageview_tiktok_effect': (context) => PageviewTiktokEffect(),
+        '/color_change_challenge': (context) => ColorChangeChallange(),
       },
     );
   }
