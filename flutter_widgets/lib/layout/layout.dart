@@ -66,7 +66,13 @@ class _LandingPageState extends State<LandingPage> {
           'route': '/about_dialog_widget',
           'icon': Icons.info,
           'content': 'This page demonstrates the About Dialog widget.',
-        }
+        },
+        {
+          'title': 'Full Screen Dialog Widget',
+          'route': '/full_screen_dialog_widget',
+          'icon': Icons.fullscreen,
+          'content': 'This page demonstrates the Full Screen Dialog widget.',
+        },
       ],
     }
   ];
