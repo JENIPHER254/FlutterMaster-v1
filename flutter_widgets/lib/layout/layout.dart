@@ -61,6 +61,12 @@ class _LandingPageState extends State<LandingPage> {
           'icon': Icons.view_quilt,
           'content': 'This page demonstrates the Alert Dialog widget.',
         },
+        {
+          'title': 'About Dialog Widget',
+          'route': '/about_dialog_widget',
+          'icon': Icons.info,
+          'content': 'This page demonstrates the About Dialog widget.',
+        }
       ],
     }
   ];

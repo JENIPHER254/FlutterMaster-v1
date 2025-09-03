@@ -9,7 +9,7 @@ class AlertDialogWidget extends StatelessWidget {
         body: Center(
       child: Container(
         width: MediaQuery.of(context).size.width * 0.6,
-        height: MediaQuery.of(context).size.height * 0.07,
+        height: MediaQuery.of(context).size.height * 0.05,
         child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.purple,

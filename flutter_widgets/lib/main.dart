@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/alert_dialog/about_dialog.dart';
 import 'package:flutter_widgets/alert_dialog/alert_dialog.dart';
 import 'package:flutter_widgets/page_view_wiget/color_change_challange.dart'
     show ColorChangeChallange;
@@ -48,6 +49,7 @@ class _MainLayoutState extends State<MainLayout> {
 
         // alert dialog widgets
         '/alert_dialog_widget': (context) => AlertDialogWidget(),
+        '/about_dialog_widget': (context) => AboutDialogWidget(),
       },
     );
   }
