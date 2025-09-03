@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/page_view_wiget/color_change_challange.dart' show ColorChangeChallange;
+import 'package:flutter_widgets/alert_dialog/alert_dialog.dart';
+import 'package:flutter_widgets/page_view_wiget/color_change_challange.dart'
+    show ColorChangeChallange;
 
 import 'layout/layout.dart';
 import 'page_view_wiget/horizontal_auto.dart';
@@ -35,12 +37,17 @@ class _MainLayoutState extends State<MainLayout> {
         '/': (context) => LandingPage(
               toggleTheme: toggleTheme,
             ),
+
+        // pageview widgets
         '/pageview_horizontal_auto': (context) => HorizontalAutomatic(),
         '/pageview_horizontal_manual': (context) => HorizontalManual(),
         '/pageview_vertical_auto': (context) => VerticalAutomatic(),
         '/pageview_vertical_manual': (context) => VerticalManual(),
         '/pageview_tiktok_effect': (context) => PageviewTiktokEffect(),
         '/color_change_challenge': (context) => ColorChangeChallange(),
+
+        // alert dialog widgets
+        '/alert_dialog_widget': (context) => AlertDialogWidget(),
       },
     );
   }

@@ -47,10 +47,22 @@ class _LandingPageState extends State<LandingPage> {
           'title': 'Color Change',
           'route': '/color_change_challenge',
           'icon': Icons.tab,
-          'content': 'This page demonstrates the Color Change effect using PageView.',
+          'content':
+              'This page demonstrates the Color Change effect using PageView.',
         },
       ],
     },
+    {
+      'title': 'Alert Dialog Widgets',
+      'subcategories': [
+        {
+          'title': 'Alert Dialog Widget',
+          'route': '/alert_dialog_widget',
+          'icon': Icons.view_quilt,
+          'content': 'This page demonstrates the Alert Dialog widget.',
+        },
+      ],
+    }
   ];
 
   Widget buildCategoryTile(
